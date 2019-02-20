@@ -8,7 +8,7 @@ SELECT
 FROM 		Client_table as t01
 
 LEFT JOIN	Agent_table as t02
-ON			t01.Agent_ID=t02.Agent_ID
+ON		t01.Agent_ID=t02.Agent_ID
 
 QUALIFY ROW_NUMBER() OVER(PARTITION BY Client_ID, Agent_ID ORDER BY Role_Type DESC)=1
 ) WITH DATA
@@ -28,7 +28,7 @@ SELECT
 FROM 		vt_population as pop
 
 LEFT JOIN	DB.Agent_store as t01
-ON			pop.Agent_ID=t01.Agent_ID
+ON		pop.Agent_ID=t01.Agent_ID
 
 WHERE 		Year IN (2015,2016)
 ) WITH DATA
@@ -67,7 +67,7 @@ LEFT JOIN
 			, a.Agent_ID
 			FROM		DB.Client_Forms as a
 			LEFT JOIN 	DB.Form_transactions as b
-			ON 			a.Transaction_ID=b.Transaction_ID
+			ON 		a.Transaction_ID=b.Transaction_ID
 			WHERE		Client_ID IN (SELECT Client_ID from vt_population)
 			AND 		b.Role_code=50
 			AND 		b.Form_type=9000
@@ -85,7 +85,7 @@ LEFT JOIN
 			, a.Agent_ID
 			FROM		DB.Player_Forms as a
 			LEFT JOIN 	DB.Form_transactions as b
-			ON 			a.Transaction_ID=b.Transaction_ID
+			ON 		a.Transaction_ID=b.Transaction_ID
 			WHERE		Client_ID IN (SELECT Client_ID from vt_population)
 			AND 		b.Role_code=100
 			AND 		b.Form_type=9500
@@ -112,7 +112,7 @@ SELECT
 FROM 		vt_population as pop
 
 INNER JOIN	vt_agent_details_1 AS t01
-ON			pop.Client_ID=t01.Client_ID
+ON		pop.Client_ID=t01.Client_ID
 
 QUALIFY ROW_NUMBER() OVER(PARTITION BY pop.Client_ID, Agent_Role, t01.Year, Agent_ID ORDER BY Agent_Name DESC)=1
 
@@ -128,7 +128,7 @@ SELECT
 FROM 		vt_population as pop
 
 INNER JOIN	vt_agent_details_2 AS t01
-ON			pop.Client_ID=t01.Client_ID
+ON		pop.Client_ID=t01.Client_ID
 
 QUALIFY ROW_NUMBER() OVER(PARTITION BY pop.Client_ID, Agent_Role, t01.Year, Agent_ID ORDER BY Agent_Name DESC)=1
 ) WITH DATA
@@ -204,7 +204,7 @@ SELECT
 FROM 		vt_agent_role_check as t01
 
 INNER JOIN	vt_agent_role_check as t02
-ON 			t01.Client_ID=t02.Client_ID
+ON 		t01.Client_ID=t02.Client_ID
 AND 		t01.Year=t02.Year
 
 QUALIFY ROW_NUMBER() OVER(PARTITION BY t01.Client_ID, t01.Year ORDER BY Both Roles DESC, Different_agents DESC, Only_one_role DESC, No_role DESC)=1					
