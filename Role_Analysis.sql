@@ -41,19 +41,19 @@ CREATE VOLATILE TABLE vt_agent_details_2 AS
 SELECT
 	pop.Client_ID
 	, CASE WHEN t01.Year IS NOT NULL THEN t01.Year
-			WHEN t02.Year IS NOT NULL THEN t02.Year
+		WHEN t02.Year IS NOT NULL THEN t02.Year
 	END AS Year
 
 	, CASE WHEN t01.Transaction_ID IS NOT NULL THEN t01.Transaction_ID
-			WHEN t02.Transaction_ID IS NOT NULL THEN t02.Transaction_ID
+		WHEN t02.Transaction_ID IS NOT NULL THEN t02.Transaction_ID
 	END AS Transaction_ID
 	
 	, CASE WHEN t01.Agent_ID IS NOT NULL THEN t01.Agent_ID
-			WHEN t02.Agent_ID IS NOT NULL THEN t02.Agent_ID
+		WHEN t02.Agent_ID IS NOT NULL THEN t02.Agent_ID
 	END AS Agent_ID
 	
 	, CASE WHEN t01.Agent_Name IS NOT NULL THEN t01.Agent_Name
-			WHEN t02.Agent_Name IS NOT NULL THEN t02.Agent_Name
+		WHEN t02.Agent_Name IS NOT NULL THEN t02.Agent_Name
 	END AS Agent_Name
 	
 FROM 		vt_population as pop
@@ -151,54 +151,54 @@ SELECT
 
 	, CASE WHEN t01.Year=2015 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 =t02.Agent_Number
-				THEN 'Y'
-			WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
+		THEN 'Y'
+		WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 =t02.Agent_Number
-				THEN 'Y'
-			WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
+		THEN 'Y'
+		WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 =t02.Agent_Number
-				THEN 'Y'				
-			WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
+		THEN 'Y'				
+		WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 =t02.Agent_Number
-				THEN 'Y'
-			ELSE 'N'
+		THEN 'Y'
+		ELSE 'N'
 	END AS Both_roles
 
 	, CASE WHEN t01.Year=2015 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 <>t02.Agent_Number
-				THEN 'Y'
-			WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
+		THEN 'Y'
+		WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 <>t02.Agent_Number
-				THEN 'Y'
-			WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
+		THEN 'Y'
+		WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 <>t02.Agent_Number
-				THEN 'Y'				
-			WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
+		THEN 'Y'				
+		WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NOT NULL AND t01.Agent_Number
 <>t02.Agent_Number
-				THEN 'Y'
-			ELSE 'N'
+		THEN 'Y'
+		ELSE 'N'
 	END AS Different_agents
 
 	, CASE WHEN t01.Year=2015 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NULL
-				THEN 'Y'
-			WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
-				THEN 'Y'
-			WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NULL
-				THEN 'Y'				
-			WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
-				THEN 'Y'
-			ELSE 'N'
+		THEN 'Y'
+		WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
+		THEN 'Y'
+		WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NULL
+		THEN 'Y'				
+		WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NOT NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
+		THEN 'Y'
+		ELSE 'N'
 	END AS Only_one_role
 
 	, CASE WHEN t01.Year=2015 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NULL AND t02.Year=2015 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NULL
-				THEN 'Y'
-			WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
-				THEN 'Y'
-			WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NULL
-				THEN 'Y'				
-			WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
-				THEN 'Y'
-			ELSE 'N'
+		THEN 'Y'
+		WHEN t01.Year=2015 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NULL AND t02.Year=2015 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
+		THEN 'Y'
+		WHEN t01.Year=2016 AND t01.Agent_Role='Star' AND t01.Agent_Number IS NULL AND t02.Year=2016 AND t02.Agent_Role='Clover' AND t02.Agent_Number IS NULL
+		THEN 'Y'				
+		WHEN t01.Year=2016 AND t01.Agent_Role='Clover' AND t01.Agent_Number IS NULL AND t02.Year=2016 AND t02.Agent_Role='Star' AND t02.Agent_Number IS NULL
+		THEN 'Y'
+		ELSE 'N'
 	END AS No_role
 
 FROM 		vt_agent_role_check as t01
